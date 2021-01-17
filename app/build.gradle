@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "petros.efthymiou.groovy"
+        applicationId "sagi.sela.groovy"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -35,6 +35,9 @@ android {
 
     testOptions {
         animationsDisabled = true
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

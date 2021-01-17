@@ -1,4 +1,4 @@
-package petros.efthymiou.groovy
+package sagi.sela.groovy
 
 import org.junit.Test
 
