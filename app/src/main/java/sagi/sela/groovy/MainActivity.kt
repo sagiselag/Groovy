@@ -2,6 +2,7 @@ package sagi.sela.groovy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import sagi.sela.groovy.playlist.PlaylistFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

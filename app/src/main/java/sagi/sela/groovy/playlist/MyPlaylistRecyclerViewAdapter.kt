@@ -1,4 +1,4 @@
-package sagi.sela.groovy
+package sagi.sela.groovy.playlist
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

@@ -1,4 +1,6 @@
-package sagi.sela.groovy
+package sagi.sela.groovy.playlist
+
+import sagi.sela.groovy.R
 
 data class Playlist(
     val id:String,
