@@ -1,16 +1,17 @@
-package sagi.sela.groovy.playlist
+package sagi.sela.groovy.model.playlist
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import java.lang.RuntimeException
+import javax.inject.Inject
 
 
-class PlaylistService (
+class PlaylistService @Inject constructor (
         private val api : PlaylistAPI
         ){
 
-    suspend fun fetchPlaylists() : Flow<Result<List<Playlist>>> {
+    suspend fun fetchPlaylists() : Flow<Result<List<PlaylistRaw>>> {
 
         return flow {
             emit(Result.success(api.fetchAllPlaylists()))

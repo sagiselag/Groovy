@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/playlistFragment">
+
+    <fragment
+        android:id="@+id/playlistFragment"
+        android:name="sagi.sela.groovy.view.playlist.PlaylistFragment"
+        android:label="PlaylistFragment">
+        <action
+            android:id="@+id/action_playlistFragment_to_playlistDetailFragment"
+            app:destination="@id/playlistDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistDetailsFragment"
+        android:name="sagi.sela.groovy.view.details.PlaylistDetailsFragment"
+        android:label="PlaylistDetailsFragment">
+
+        <argument
+            android:name="playlistId"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+</navigation>

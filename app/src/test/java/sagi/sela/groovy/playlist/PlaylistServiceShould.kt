@@ -5,17 +5,22 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.TestCase.assertEquals
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
+import sagi.sela.groovy.model.playlist.PlaylistAPI
+import sagi.sela.groovy.model.playlist.PlaylistRaw
+import sagi.sela.groovy.model.playlist.PlaylistService
 import sagi.sela.groovy.utils.BaseUnitTest
 import java.lang.RuntimeException
 
+@ExperimentalCoroutinesApi
 class PlaylistServiceShould : BaseUnitTest() {
 
     private lateinit var service : PlaylistService
     private val api : PlaylistAPI = mock()
-    private val playlists : List<Playlist> = mock()
+    private val playlists : List<PlaylistRaw> = mock()
 
 
     @Test

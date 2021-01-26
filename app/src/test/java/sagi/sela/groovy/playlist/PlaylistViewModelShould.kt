@@ -4,18 +4,22 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
+import junit.framework.TestCase.assertEquals
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
 
-import org.junit.Assert.*
+import petros.efthymiou.groovy.utils.captureValues
 import petros.efthymiou.groovy.utils.getValueForTest
+import sagi.sela.groovy.model.playlist.Playlist
+import sagi.sela.groovy.model.playlist.PlaylistRepository
 import sagi.sela.groovy.utils.BaseUnitTest
-import java.lang.Exception
+import sagi.sela.groovy.viewmodel.playlist.PlaylistViewModel
 import java.lang.RuntimeException
 
-
+@ExperimentalCoroutinesApi
 class PlaylistViewModelShould: BaseUnitTest() {
 
     private val repository: PlaylistRepository = mock()
@@ -45,6 +49,39 @@ class PlaylistViewModelShould: BaseUnitTest() {
 
         assertEquals(exception, viewModel.playlists.getValueForTest()!!.exceptionOrNull())
 //        assertEquals("other exception msg", viewModel.playlists.getValueForTest()!!.exceptionOrNull())
+    }
+
+    @Test
+    fun showSpinnerWhileLoading() = runBlockingTest {
+        val viewModel = mockSuccessfulCase()
+
+        viewModel.loader.captureValues {
+            viewModel.playlists.getValueForTest()
+
+            assertEquals(true, values[0])
+        }
+    }
+
+    @Test
+    fun closeLoaderAfterPlaylistsLoad() = runBlockingTest{
+        val viewModel = mockSuccessfulCase()
+
+        viewModel.loader.captureValues {
+            viewModel.playlists.getValueForTest()
+
+            assertEquals(false, values.last())
+        }
+    }
+
+    @Test
+    fun closeLoaderAfterError() = runBlockingTest{
+        val viewModel = mockFailureCase()
+
+        viewModel.loader.captureValues {
+            viewModel.playlists.getValueForTest()
+
+            assertEquals(false, values.last())
+        }
     }
 
     private fun mockFailureCase() : PlaylistViewModel {
