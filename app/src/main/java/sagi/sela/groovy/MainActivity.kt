@@ -7,7 +7,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     companion object {
-        var mockoonUrl = "http://192.168.100.1:3000/"
+        // TODO replace ip and mockoonPort with your actual values
+        val ip = "your ip address" //
+        val mockoonPort = "your Mockoon port" // 3000 for example
+        var mockoonUrl = "http://" + ip + ":" + mockoonPort + "/"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
